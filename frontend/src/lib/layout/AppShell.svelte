@@ -42,7 +42,7 @@
     id="conteudo"
     class={['min-h-screen pt-[var(--header-h)] transition-[padding] duration-100', $menuRecolhido ? 'md:pl-12' : 'md:pl-56']}
   >
-    <div class="mx-auto w-full max-w-6xl px-3 py-4 md:px-5">{@render children()}</div>
+    <div class="w-full px-4 py-4">{@render children()}</div>
   </main>
   <ConfirmDialog
     bind:aberto={confirmarReinicio}
