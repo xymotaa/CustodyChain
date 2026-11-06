@@ -1,0 +1,20 @@
+CustodyChain (Lucas Barros Mota, Unifesspa, 2026)
+
+Este projeto é derivado de leandroloffi/CustodyChain, de Leandro Loffi:
+  https://github.com/leandroloffi/CustodyChain
+
+Autorização: Leandro Loffi autorizou, em 23/09/2026, a cópia e a alteração do
+código-fonte do repositório original, com a condição de que o trabalho de
+origem seja citado (referenciado) sempre que este projeto for apresentado ou
+distribuído. O repositório público original não integra o resultado da tese de
+doutorado do autor.
+
+Cabeçalho de arquivos:
+  - derivados do original: "Derivado de leandroloffi/CustodyChain (2024);
+    modificado por Lucas Barros Mota (2026)"
+  - novos: "Autoria: Lucas Barros Mota (2026)"
+
+Componentes de terceiros:
+  - Hyperledger Fabric samples (fabric-samples), licenciados sob Apache License
+    2.0. Os cabeçalhos de licença originais dos arquivos em backend/ devem ser
+    mantidos e nenhum deles foi removido nesta etapa.

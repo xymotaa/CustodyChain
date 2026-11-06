@@ -1,8 +1,11 @@
+// Derivado de leandroloffi/CustodyChain (2024); modificado por Lucas Barros Mota (2026)
+// Fontes empacotadas localmente: a demonstração funciona sem internet.
+import '@fontsource/ibm-plex-sans/latin-400.css';
+import '@fontsource/ibm-plex-sans/latin-500.css';
+import '@fontsource/ibm-plex-sans/latin-600.css';
+import '@fontsource/ibm-plex-mono/latin-400.css';
 import './app.css';
 import { mount } from 'svelte';
 import App from './App.svelte';
 
-// Monta o componente na div com ID 'app'
-mount(App, {
-  target: document.getElementById('app'),
-});
+mount(App, { target: document.getElementById('app') });
