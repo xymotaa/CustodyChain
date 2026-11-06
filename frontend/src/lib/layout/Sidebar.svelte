@@ -14,6 +14,8 @@
   const compacta = $derived($menuRecolhido && !$ehMovel);
   const escondida = $derived($ehMovel && !$gavetaAberta);
   const ehEscuro = $derived($tema === 'escuro');
+  // Rótulos ficam sempre no DOM (acessíveis); só a opacidade muda. Sem sr-only para não 'saltar' a largura.
+  const rotulo = $derived(['transition-opacity duration-150', compacta ? 'md:opacity-0' : 'delay-75']);
   // Gaveta móvel: leva o foco ao menu ao abrir e o devolve ao botão ao fechar.
   let gavetaFoiAberta = false;
   $effect(() => {
@@ -39,7 +41,7 @@
   id="barra-lateral"
   inert={escondida}
   class={[
-    'fixed bottom-0 left-0 top-[var(--header-h)] z-30 flex w-60 flex-col border-r border-border bg-surface transition-[transform,width] duration-100',
+    'fixed bottom-0 left-0 top-[var(--header-h)] z-30 flex w-60 flex-col overflow-hidden border-r border-border bg-surface transition-[transform,width] duration-200 ease-out',
     'md:translate-x-0', compacta ? 'md:w-12' : 'md:w-56',
     $gavetaAberta ? 'translate-x-0' : '-translate-x-full',
   ]}
@@ -51,7 +53,7 @@
     </div>
   {/if}
 
-  <nav aria-label="Navegação principal" class="flex-1 overflow-y-auto py-2">
+  <nav aria-label="Navegação principal" class="flex-1 overflow-y-auto overflow-x-hidden py-2">
     {#each itens as item (item.caminho)}
       <a
         href={`#${item.caminho}`}
@@ -59,13 +61,12 @@
         title={compacta ? item.rotulo : undefined}
         onclick={() => gavetaAberta.set(false)}
         class={[
-          'flex h-8 items-center gap-2 border-l-2 px-3 text-sm no-underline hover:no-underline',
+          'flex h-8 items-center gap-2 whitespace-nowrap border-l-2 pl-[11px] pr-3 text-sm no-underline hover:no-underline',
           ativo(item.caminho) ? 'border-primary bg-surface-2 font-semibold text-text' : 'border-transparent text-text hover:bg-surface-2',
-          compacta && 'md:justify-center md:px-0',
         ]}
       >
         <Icon nome={item.icone} tamanho={16} />
-        <span class={compacta ? 'md:sr-only' : ''}>{item.rotulo}</span>
+        <span class={rotulo}>{item.rotulo}</span>
       </a>
     {/each}
   </nav>
@@ -75,29 +76,29 @@
       type="button"
       onclick={alternarTema}
       title={compacta ? (ehEscuro ? 'Tema claro' : 'Tema escuro') : undefined}
-      class={['flex h-8 w-full items-center gap-2 px-3 text-sm text-muted hover:bg-surface-2 hover:text-text', compacta && 'md:justify-center md:px-0']}
+      class="flex h-8 w-full items-center gap-2 whitespace-nowrap pl-[13px] pr-3 text-sm text-muted hover:bg-surface-2 hover:text-text"
     >
       <Icon nome={ehEscuro ? 'sun' : 'moon'} tamanho={16} />
-      <span class={compacta ? 'md:sr-only' : ''}>{ehEscuro ? 'Tema claro' : 'Tema escuro'}</span>
+      <span class={rotulo}>{ehEscuro ? 'Tema claro' : 'Tema escuro'}</span>
     </button>
     <button
       type="button"
       onclick={onreiniciar}
       title={compacta ? 'Reiniciar demonstração' : undefined}
-      class={['flex h-8 w-full items-center gap-2 px-3 text-sm text-muted hover:bg-surface-2 hover:text-text', compacta && 'md:justify-center md:px-0']}
+      class="flex h-8 w-full items-center gap-2 whitespace-nowrap pl-[13px] pr-3 text-sm text-muted hover:bg-surface-2 hover:text-text"
     >
       <Icon nome="refresh" tamanho={16} />
-      <span class={compacta ? 'md:sr-only' : ''}>Reiniciar demonstração</span>
+      <span class={rotulo}>Reiniciar demonstração</span>
     </button>
     <button
       type="button"
       onclick={alternarMenu}
       aria-pressed={compacta}
       title={compacta ? 'Expandir menu' : 'Recolher menu'}
-      class={['hidden h-8 w-full items-center gap-2 px-3 text-sm text-muted hover:bg-surface-2 hover:text-text md:flex', compacta && 'md:justify-center md:px-0']}
+      class="hidden h-8 w-full items-center gap-2 whitespace-nowrap pl-[13px] pr-3 text-sm text-muted hover:bg-surface-2 hover:text-text md:flex"
     >
       <Icon nome={compacta ? 'chevrons-right' : 'chevrons-left'} tamanho={16} />
-      <span class={compacta ? 'md:sr-only' : ''}>Recolher menu</span>
+      <span class={rotulo}>Recolher menu</span>
     </button>
   </div>
 </aside>

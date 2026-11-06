@@ -40,7 +40,7 @@
   <Sidebar onreiniciar={() => (confirmarReinicio = true)} />
   <main
     id="conteudo"
-    class={['min-h-screen pt-[var(--header-h)] transition-[padding] duration-100', $menuRecolhido ? 'md:pl-12' : 'md:pl-56']}
+    class={['min-h-screen pt-[var(--header-h)] transition-[padding] duration-200 ease-out', $menuRecolhido ? 'md:pl-12' : 'md:pl-56']}
   >
     <div class="w-full px-4 py-4">{@render children()}</div>
   </main>
